@@ -1,4 +1,5 @@
 FROM node:11 AS builder
+CMD ls
 ADD package*.json /tmp/
 WORKDIR /tmp
 RUN npm install --only=production

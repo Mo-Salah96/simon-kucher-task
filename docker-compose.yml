@@ -3,8 +3,7 @@ version: '3'
 services:
   backend:
     build:
-      context: .
-      dockerfile: backend/Dockerfile
+    context: backend
     image: backend
     container_name: backend
     ports:
@@ -12,8 +11,8 @@ services:
     restart: unless-stopped
   frontend:
     build:
-      context: .
-      dockerfile: front/Dockerfile
+      context: front
+      dockerfile: Dockerfile
     image: frontend
     container_name: frontend
     ports:
