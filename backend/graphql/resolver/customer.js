@@ -1,11 +1,9 @@
 const CustomerService = require('../../services/core/CustomerService');
-
+const {customersSchema, validate} = require('../../helpers/validation/')
 module.exports = {
     Query: {
         customers: async (obj, params, context, info) => {
-            console.log(params);
             const customers = await CustomerService.getAll(params);
-            console.log(JSON.stringify(customers));
             return customers;
         },
         customer: async (obj, {id}, context, info) => {
@@ -16,10 +14,12 @@ module.exports = {
     },
     Mutation: {
         createCustomer: async (obj, {input}, context, info) => {
+            await validate(customersSchema.create, input);
             const customer = await CustomerService.create(input);
             return customer;
         },
         updateCustomer: async (obj, {input, id}, context, info) => {
+            await validate(customersSchema.create, input, false);
             const customer = await CustomerService.update(id, input);
             return customer;
 
