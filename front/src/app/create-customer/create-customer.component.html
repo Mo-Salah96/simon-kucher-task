@@ -1,0 +1,33 @@
+<form class="example-container" [formGroup]="createForm" (ngSubmit)="submit()">
+  <mat-form-field>
+    <input matInput placeholder="Code" formControlName="code" type="number">
+  </mat-form-field>
+
+  <mat-form-field formGroupName="profile">
+    <input matInput placeholder="Name" formControlName="name" type="text">
+  </mat-form-field>
+
+  <mat-form-field formGroupName="profile">
+    <input matInput placeholder="Last name" formControlName="last_name" type="text">
+  </mat-form-field>
+  <mat-form-field formGroupName="profile">
+    <input matInput placeholder="email" formControlName="email" type="email">
+  </mat-form-field>
+  <mat-form-field formGroupName="profile">
+    <input matInput placeholder="number" formControlName="number" type="text">
+  </mat-form-field>
+  <mat-form-field formGroupName="profile">
+    <input matInput placeholder="website" formControlName="website" type="text">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Balance" formControlName="balance" type="number">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Industry" formControlName="industryId">
+      <mat-option *ngFor="let industry of industries |async" [value]="industry.id">{{industry.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">industries</mat-hint>
+  </mat-form-field>
+  <button mat-button class="btn">create</button>
+
+</form>

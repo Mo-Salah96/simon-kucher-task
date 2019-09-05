@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  arees-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: arees-api
+    ports:
+      - 3001:3000
+    container_name: arees-api
+    restart: unless-stopped
+    environment:
+      VIRTUAL_HOST: ${HOST}
+      VIRTUAL_PORT: 3001
+      LETSENCRYPT_HOST: ${HOST}
+      LETSENCRYPT_EMAIL: m.salah@hykaia.com
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
